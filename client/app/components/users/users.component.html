@@ -1,0 +1,28 @@
+<div style="margin-top:20px;width:300px;">
+  <div class="row user-list">
+
+      <div class="media user-list-item current-user">
+        <a href="#" class="pull-left">        
+          <img alt="64x64" data-src="holder.js/64x64" class="media-object" style="width: 64px; height: 64px;" src="http://placehold.it/64x64">      
+        </a>
+        <div class="media-body">
+          <h5 class="media-heading"><a href="#">{{ currUser.name }}</a></h5>
+          <p class="small">{{ currUser.email }}</p>
+        </div>
+        <input type="submit" class="logout-btn" (click)="logout()" value="Logout">
+    </div>  
+
+    <div *ngFor="let user of users">
+      <div class="media user-list-item" *ngIf="user._id != currUser._id">
+        <a href="#" class="pull-left">        
+          <img alt="64x64" data-src="holder.js/64x64" class="media-object" style="width: 64px; height: 64px;" src="http://placehold.it/64x64">      
+        </a>
+        <div class="media-body">
+          <h5 class="media-heading"><a href="#">{{user.name }}</a></h5>
+          <p class="small">{{ user.email}}</p>
+        </div>  
+    </div>  
+    </div>
+
+  </div>
+</div>

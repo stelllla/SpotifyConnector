@@ -1,0 +1,31 @@
+<navbar></navbar>
+<div class="main">
+  <users></users>
+  <div class="container">
+    <div class="router-content">
+        <h1>Need Music?</h1>
+        <p class="lead">Find your favorite artists. Just type the search bellow.</p>
+        <form>
+          <div class="form-group">
+            <input type="text" name="searchStr" [(ngModel)]="searchStr" (keyup)="searchMusic()" class="form-control"
+                  placeholder="Search Music..."/>
+          </div>
+        </form>
+        <div *ngIf="searchResults">
+          <div *ngFor="let res of searchResults">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="search-res well">
+                  <h4><a routerLink='artist/{{res.id}}'>{{res.name}}</a></h4>
+                  <div>
+                    <strong>Genres: </strong>
+                    <span *ngFor="let genre of res.genres">{{genre}}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
