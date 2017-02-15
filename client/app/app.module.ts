@@ -6,7 +6,7 @@ import {NavbarComponent} from "./components/navbar/navbar.component";
 import {AppComponent}  from './app.component';
 import {AboutComponent} from "./components/about/about.component";
 import {SearchComponent} from "./components/search/search.component";
-import {routing} from "./app.routing";
+import {AppRoutingModule} from "./app.routing";
 import {FormsModule} from "@angular/forms";
 import {HttpModule} from "@angular/http";
 import {ArtistComponent} from "./components/artist/artist.component";
@@ -19,7 +19,7 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 
 @NgModule({
-  imports: [BrowserModule, routing, FormsModule, HttpModule,ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpModule,ReactiveFormsModule],
   declarations: [AppComponent, NavbarComponent, AboutComponent, SearchComponent, ArtistComponent, AlbumComponent, LoginComponent, RegisterComponent, UsersComponent],
   bootstrap: [AppComponent],
   providers: [ CookieService ]

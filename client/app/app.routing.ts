@@ -1,5 +1,6 @@
 import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import { NgModule } from '@angular/core';
 
 import {AboutComponent} from './components/about/about.component';
 import {SearchComponent} from './components/search/search.component';
@@ -49,7 +50,14 @@ const appRoutes: Routes = [
   }
  ];*/
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, {useHash: true});
+// export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, {useHash: true});
+
+@NgModule({
+  imports: [ RouterModule.forRoot(appRoutes, {useHash: true}) ],
+  exports: [ RouterModule ]
+})
+export class AppRoutingModule {}
+
 /**
  * export const dynamicRouting: ModuleWithProviders = RouterModule.forRoot(dynamicRoutes);
  * */

@@ -16,7 +16,6 @@ export class SearchComponent {
   searchResults: Artist[];
 
   constructor(private _spotifyService:SpotifyService){
-
   }
 
   searchMusic() {

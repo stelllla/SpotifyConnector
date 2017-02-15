@@ -9,16 +9,19 @@ import 'rxjs/add/operator/filter';
   moduleId: module.id,
   selector: 'my-app',
   templateUrl: 'app.components.html',
-  providers: [SpotifyService, Router, AuthenticationService]
+  providers: [SpotifyService, AuthenticationService]
 })
+
 export class AppComponent  {
 
-  constructor(private _spotifyService: SpotifyService, private _router: Router, private _auth: AuthenticationService) {
+  constructor(private _spotifyService: SpotifyService, private _router: Router,private _auth: AuthenticationService) {
     this._router.events.subscribe((event:NavigationStart) => {
         console.log(event);
         let currUserEmail = this._auth.getCurrentUser();
-        if (!currUserEmail) {
+        if (!currUserEmail && event.url != '/login') {
           this._router.navigate(['/login']);
+        } else if (currUserEmail && event.url == '/login') {
+          this._router.navigate(['']);
         }
 
     });

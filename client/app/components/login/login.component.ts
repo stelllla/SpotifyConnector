@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UsersService } from '../../services/users.service';
-import { Router} from '@angular/router'
+import { Router, NavigationStart} from '@angular/router'
 import { LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { User } from "../../../User";
 import { FormBuilder, Validators } from '@angular/forms';

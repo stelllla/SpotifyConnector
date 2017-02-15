@@ -28,7 +28,7 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, app_routing_1.routing, forms_1.FormsModule, http_1.HttpModule, forms_2.ReactiveFormsModule],
+        imports: [platform_browser_1.BrowserModule, app_routing_1.AppRoutingModule, forms_1.FormsModule, http_1.HttpModule, forms_2.ReactiveFormsModule],
         declarations: [app_component_1.AppComponent, navbar_component_1.NavbarComponent, about_component_1.AboutComponent, search_component_1.SearchComponent, artist_component_1.ArtistComponent, album_component_1.AlbumComponent, login_component_1.LoginComponent, register_component_1.RegisterComponent, users_component_1.UsersComponent],
         bootstrap: [app_component_1.AppComponent],
         providers: [cookies_service_1.CookieService]

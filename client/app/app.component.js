@@ -22,8 +22,11 @@ var AppComponent = (function () {
         this._router.events.subscribe(function (event) {
             console.log(event);
             var currUserEmail = _this._auth.getCurrentUser();
-            if (!currUserEmail) {
+            if (!currUserEmail && event.url != '/login') {
                 _this._router.navigate(['/login']);
+            }
+            else if (currUserEmail && event.url == '/login') {
+                _this._router.navigate(['']);
             }
         });
     }
@@ -34,7 +37,7 @@ AppComponent = __decorate([
         moduleId: module.id,
         selector: 'my-app',
         templateUrl: 'app.components.html',
-        providers: [spotify_service_1.SpotifyService, router_1.Router, authentication_service_1.AuthenticationService]
+        providers: [spotify_service_1.SpotifyService, authentication_service_1.AuthenticationService]
     }),
     __metadata("design:paramtypes", [spotify_service_1.SpotifyService, router_1.Router, authentication_service_1.AuthenticationService])
 ], AppComponent);
