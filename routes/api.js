@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
-var Model = require('../models/model.js');
+var UserModel = require('../models/user.model.js');
+var MessageModel = require('../models/message.model.js');
 
 router.post('/user', function(request, response) {
-    var user = new Model(request.body);
+    var user = new UserModel(request.body);
     user.save(function (err, resource) {
         if (err) {
             response.send(err).status(501);
@@ -14,7 +15,7 @@ router.post('/user', function(request, response) {
 });
 
 router.get('/users', function(request, response) {
-    Model.find({}, function(err, resources) {
+    UserModel.find({}, function(err, resources) {
         if (err) {
             response.send(err).status(404);
         } else {
@@ -25,7 +26,7 @@ router.get('/users', function(request, response) {
 
 router.delete('/users/:id', function(request, response) {
     var id = request.params.id;
-    Model.remove({ _id: id }, function(err, resource) {
+    UserModel.remove({ _id: id }, function(err, resource) {
         if (err) {
             return response.send(err);
         } else {
@@ -35,9 +36,8 @@ router.delete('/users/:id', function(request, response) {
 });
 
 router.get('/users/:email', function(request, response) {
-    console.log('getting a user by email');
     var email = request.params.email;
-    Model.findOne({'email': email}, function(err, res) {
+    UserModel.findOne({'email': email}, function(err, res) {
         if (err) {
             return response.send(err);
         } else {
@@ -45,6 +45,38 @@ router.get('/users/:email', function(request, response) {
             response.json(user);
         }
     });
+});
+
+router.get('/messages', function (request, response) {
+     MessageModel.find({}, function(err, resources) {
+        if (err) {
+            response.send(err).status(404);
+        } else {
+            response.send(resources).status(200);
+        }
+    });
+});
+
+router.post('/message', function(request, response) {
+    var message = new MessageModel(request.body);
+    message.save(function (err, resource) {
+        if (err) {
+            response.send(err).status(501);
+        } else {
+            response.json(resource).status(201);
+        }
+    })
+});
+
+router.delete('/messages/:id', function(request, response) {
+    var id = request.params.id;
+    MessageModel.remove({ _id: id }, function(err, resource) {
+        if (err) {
+            return response.send(err);
+        } else {
+            response.send(resource);
+        }
+    })
 });
 
 module.exports = router;

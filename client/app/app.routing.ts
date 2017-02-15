@@ -9,6 +9,7 @@ import {AlbumComponent} from "./components/album/album.component";
 import {LoginComponent} from "./components/login/login.component";
 import {RegisterComponent} from "./components/register/register.component";
 import {UsersComponent} from "./components/users/users.component";
+import {ChatViewComponent} from "./components/chat-view/chat.view.component";
 
 
 //No hash strategy for routes without dynamic parameters
@@ -36,6 +37,10 @@ const appRoutes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+    {
+    path: 'chat',
+    component: ChatViewComponent
   }
 ];
 

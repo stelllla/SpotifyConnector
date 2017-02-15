@@ -7,6 +7,6 @@ var UserSchema = new Schema({
     email: String
 });
 
-var Model = mongoose.model('User', UserSchema);
+var UserModel = mongoose.model('User', UserSchema);
 
-module.exports = Model;
+module.exports = UserModel;

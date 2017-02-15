@@ -16,11 +16,15 @@ import {RegisterComponent} from "./components/register/register.component";
 import {UsersComponent} from "./components/users/users.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
+import {ChatComponent} from "./components/chat/chat.component";
+import {CreateMessage} from "./components/create-message/create-message.component";
+import {ChatViewComponent} from "./components/chat-view/chat.view.component";
 
 
 @NgModule({
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpModule,ReactiveFormsModule],
-  declarations: [AppComponent, NavbarComponent, AboutComponent, SearchComponent, ArtistComponent, AlbumComponent, LoginComponent, RegisterComponent, UsersComponent],
+  declarations: [AppComponent, NavbarComponent, AboutComponent, SearchComponent, ArtistComponent, AlbumComponent,
+                 LoginComponent, RegisterComponent, UsersComponent,ChatComponent, CreateMessage, ChatViewComponent],
   bootstrap: [AppComponent],
   providers: [ CookieService ]
 })

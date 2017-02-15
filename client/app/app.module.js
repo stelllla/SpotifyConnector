@@ -21,6 +21,9 @@ var register_component_1 = require("./components/register/register.component");
 var users_component_1 = require("./components/users/users.component");
 var forms_2 = require("@angular/forms");
 var cookies_service_1 = require("angular2-cookie/services/cookies.service");
+var chat_component_1 = require("./components/chat/chat.component");
+var create_message_component_1 = require("./components/create-message/create-message.component");
+var chat_view_component_1 = require("./components/chat-view/chat.view.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -29,7 +32,8 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, app_routing_1.AppRoutingModule, forms_1.FormsModule, http_1.HttpModule, forms_2.ReactiveFormsModule],
-        declarations: [app_component_1.AppComponent, navbar_component_1.NavbarComponent, about_component_1.AboutComponent, search_component_1.SearchComponent, artist_component_1.ArtistComponent, album_component_1.AlbumComponent, login_component_1.LoginComponent, register_component_1.RegisterComponent, users_component_1.UsersComponent],
+        declarations: [app_component_1.AppComponent, navbar_component_1.NavbarComponent, about_component_1.AboutComponent, search_component_1.SearchComponent, artist_component_1.ArtistComponent, album_component_1.AlbumComponent,
+            login_component_1.LoginComponent, register_component_1.RegisterComponent, users_component_1.UsersComponent, chat_component_1.ChatComponent, create_message_component_1.CreateMessage, chat_view_component_1.ChatViewComponent],
         bootstrap: [app_component_1.AppComponent],
         providers: [cookies_service_1.CookieService]
     })

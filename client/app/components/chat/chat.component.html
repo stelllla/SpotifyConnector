@@ -1,0 +1,8 @@
+<div class="messages">
+    <h2>Latest messages:</h2>
+    <div class="latest-messages">
+        <p *ngFor="let msg of messages">
+            <strong>[{{msg.author}}]</strong>({{msg.newDate}}) : {{msg.message}}
+        </p>
+    </div>
+</div>
