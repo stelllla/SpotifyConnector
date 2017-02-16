@@ -26,7 +26,8 @@ export class RegisterComponent {
         var user = {
             name: this.registerForm.value.name,
             email: this.registerForm.value.email,
-            password: this.registerForm.value.password
+            password: this.registerForm.value.password,
+            status: 'online'
         }
          this._usersService.addUser(user).subscribe(data => {
             console.log("Success " + data);

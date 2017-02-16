@@ -33,6 +33,7 @@ var LoginComponent = (function () {
             console.log("Success " + data);
             if (data.password == pass) {
                 _this._auth.setCurrentUser(data.email);
+                _this._usersService.updateUserStatus(data._id, 'online');
                 _this._router.navigate(['']);
             }
         });

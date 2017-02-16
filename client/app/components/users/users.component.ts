@@ -33,6 +33,7 @@ export class UsersComponent implements OnInit{
 
     logout() {
         this._auth.deleteCurrentUser();
+        this._usersService.updateUserStatus(this.currUser._id, 'offline');
         this._router.navigate(['/login']);
     }
 }

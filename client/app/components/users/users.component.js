@@ -32,6 +32,7 @@ var UsersComponent = (function () {
     };
     UsersComponent.prototype.logout = function () {
         this._auth.deleteCurrentUser();
+        this._usersService.updateUserStatus(this.currUser._id, 'offline');
         this._router.navigate(['/login']);
     };
     return UsersComponent;

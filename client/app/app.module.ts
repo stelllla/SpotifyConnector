@@ -22,7 +22,7 @@ import {ChatViewComponent} from "./components/chat-view/chat.view.component";
 
 
 @NgModule({
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpModule,ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpModule, ReactiveFormsModule],
   declarations: [AppComponent, NavbarComponent, AboutComponent, SearchComponent, ArtistComponent, AlbumComponent,
                  LoginComponent, RegisterComponent, UsersComponent,ChatComponent, CreateMessage, ChatViewComponent],
   bootstrap: [AppComponent],

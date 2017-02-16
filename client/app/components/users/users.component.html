@@ -3,7 +3,7 @@
 
       <div class="media user-list-item current-user">
         <a href="#" class="pull-left">        
-          <img alt="64x64" data-src="holder.js/64x64" class="media-object" style="width: 64px; height: 64px;" src="http://placehold.it/64x64">      
+          <img alt="64x64" data-src="holder.js/64x64" class="media-object online" style="width: 64px; height: 64px;" src="http://placehold.it/64x64">      
         </a>
         <div class="media-body">
           <h5 class="media-heading"><a href="#">{{ currUser.name }}</a></h5>
@@ -15,7 +15,7 @@
     <div *ngFor="let user of users">
       <div class="media user-list-item" *ngIf="user._id != currUser._id">
         <a href="#" class="pull-left">        
-          <img alt="64x64" data-src="holder.js/64x64" class="media-object" style="width: 64px; height: 64px;" src="http://placehold.it/64x64">      
+          <img [ngClass]="{online: 'online', offline:'offline'}[user.status]" alt="64x64" data-src="holder.js/64x64" class="media-object" style="width: 64px; height: 64px;" src="http://placehold.it/64x64">      
         </a>
         <div class="media-body">
           <h5 class="media-heading"><a href="#">{{user.name }}</a></h5>

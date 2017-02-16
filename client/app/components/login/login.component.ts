@@ -28,6 +28,7 @@ export class LoginComponent {
             console.log("Success " + data);
             if (data.password == pass) {
                 this._auth.setCurrentUser(data.email);
+                this._usersService.updateUserStatus(data._id, 'online');
                 this._router.navigate(['']);
             }
         });

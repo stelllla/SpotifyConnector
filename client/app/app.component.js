@@ -14,6 +14,7 @@ var router_1 = require("@angular/router");
 var authentication_service_1 = require("./services/authentication.service");
 var chat_service_1 = require("./services/chat.service");
 var websocket_service_1 = require("./services/websocket.service");
+var message_service_1 = require("./services/message.service");
 require("rxjs/add/operator/filter");
 var AppComponent = (function () {
     function AppComponent(_spotifyService, _router, _auth) {
@@ -25,7 +26,7 @@ var AppComponent = (function () {
             console.log(event);
             var currUserEmail = _this._auth.getCurrentUser();
             if (!currUserEmail) {
-                if (event.url == '/login' || event.url != "/register") {
+                if (event.url != '/login' && event.url != "/register") {
                     _this._router.navigate(['/login']);
                 }
             }
@@ -41,7 +42,7 @@ AppComponent = __decorate([
         moduleId: module.id,
         selector: 'my-app',
         templateUrl: 'app.components.html',
-        providers: [spotify_service_1.SpotifyService, authentication_service_1.AuthenticationService, chat_service_1.ChatService, websocket_service_1.WebSocketService]
+        providers: [spotify_service_1.SpotifyService, authentication_service_1.AuthenticationService, chat_service_1.ChatService, websocket_service_1.WebSocketService, message_service_1.MessageService]
     }),
     __metadata("design:paramtypes", [spotify_service_1.SpotifyService, router_1.Router, authentication_service_1.AuthenticationService])
 ], AppComponent);

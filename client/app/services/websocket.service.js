@@ -11,7 +11,6 @@ var Subject_1 = require("rxjs/Subject");
 var WebSocketService = (function () {
     function WebSocketService() {
     }
-    // For chat box
     WebSocketService.prototype.connect = function (url) {
         if (!this.subject) {
             this.subject = this.create(url);
@@ -36,7 +35,7 @@ var WebSocketService = (function () {
         return Subject_1.Subject.create(observer, observable);
     };
     return WebSocketService;
-}()); // end class WebSocketService
+}());
 WebSocketService = __decorate([
     core_1.Injectable()
 ], WebSocketService);

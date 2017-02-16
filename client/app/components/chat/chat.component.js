@@ -10,20 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var chat_service_1 = require("../../services/chat.service");
+var message_service_1 = require("../../services/message.service");
 var ChatComponent = (function () {
-    function ChatComponent(chatService) {
+    function ChatComponent(chatService, messageService) {
         this.chatService = chatService;
+        this.messageService = messageService;
         this.messages = [];
     }
     ChatComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.chatService.loadMessages().subscribe(function (data) {
+        this.messageService.loadMessages().subscribe(function (data) {
             _this.messages = data;
         });
         this.chatService.messages.subscribe(function (msg) {
-            _this.chatService.saveMessage(msg).subscribe(function (data) {
-                console.log('message saved');
-            });
+            // this.messageService.saveMessage(msg).subscribe((data) => {
+            // 	console.log('message saved');
+            // });
             _this.messages.push(msg);
         });
     };
@@ -34,9 +36,9 @@ ChatComponent = __decorate([
         moduleId: module.id,
         selector: 'chat-component',
         templateUrl: 'chat.component.html',
-        providers: [chat_service_1.ChatService]
+        providers: [chat_service_1.ChatService, message_service_1.MessageService]
     }),
-    __metadata("design:paramtypes", [chat_service_1.ChatService])
+    __metadata("design:paramtypes", [chat_service_1.ChatService, message_service_1.MessageService])
 ], ChatComponent);
 exports.ChatComponent = ChatComponent;
 //# sourceMappingURL=chat.component.js.map

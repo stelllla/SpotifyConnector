@@ -47,6 +47,18 @@ router.get('/users/:email', function(request, response) {
     });
 });
 
+router.post('/user/updateStatus', function(request, response) {
+    var id = request.body.id;
+    var newStatus = request.body.status;
+    UserModel.update({ _id: id }, { $set: { status: newStatus }}, function(err, resource) {
+        if (err) {
+            return response.send(err).status(501);
+        } else {
+             response.send(resource).status(200);
+        }
+    });
+});
+
 router.get('/messages', function (request, response) {
      MessageModel.find({}, function(err, resources) {
         if (err) {
@@ -71,6 +83,16 @@ router.post('/message', function(request, response) {
 router.delete('/messages/:id', function(request, response) {
     var id = request.params.id;
     MessageModel.remove({ _id: id }, function(err, resource) {
+        if (err) {
+            return response.send(err);
+        } else {
+            response.send(resource);
+        }
+    })
+});
+
+router.delete('/messages', function(request, response) {
+    MessageModel.remove({}, function(err, resource) {
         if (err) {
             return response.send(err);
         } else {

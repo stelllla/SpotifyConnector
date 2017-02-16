@@ -11,18 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var chat_service_1 = require("../../services/chat.service");
 var authentication_service_1 = require("../../services/authentication.service");
+var message_service_1 = require("../../services/message.service");
 var CreateMessage = (function () {
-    function CreateMessage(chatService, _auth) {
+    function CreateMessage(chatService, _auth, messageService) {
         this.chatService = chatService;
         this._auth = _auth;
+        this.messageService = messageService;
         this.message = {
             author: '',
-            message: ''
+            message: '',
+            newDate: ''
         };
     }
     CreateMessage.prototype.sendMsg = function () {
         // console.log('new message from client: ', this.message);
         this.message.author = this._auth.getCurrentUser();
+        this.message.newDate = new Date().toLocaleTimeString();
+        this.messageService.saveMessage(this.message).subscribe(function (data) {
+            console.log('message saved');
+        });
         this.chatService.messages.next(this.message);
         this.message.message = '';
     };
@@ -35,7 +42,7 @@ CreateMessage = __decorate([
         templateUrl: 'create-message.component.html',
         viewProviders: [chat_service_1.ChatService, authentication_service_1.AuthenticationService]
     }),
-    __metadata("design:paramtypes", [chat_service_1.ChatService, authentication_service_1.AuthenticationService])
+    __metadata("design:paramtypes", [chat_service_1.ChatService, authentication_service_1.AuthenticationService, message_service_1.MessageService])
 ], CreateMessage);
 exports.CreateMessage = CreateMessage;
 //# sourceMappingURL=create-message.component.js.map

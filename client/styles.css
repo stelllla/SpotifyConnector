@@ -237,5 +237,16 @@ p .small {
   top:0;
   bottom: 0;
   position:fixed;
-  
+}
+
+.online {
+    border-left-color: green;
+    border-left-style: solid;
+    border-left-width: 5px;
+}
+
+.offline {
+    border-left-color: gray;
+    border-left-style: solid;
+    border-left-width: 5px;
 }

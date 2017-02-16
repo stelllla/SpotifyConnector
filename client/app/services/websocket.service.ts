@@ -7,7 +7,6 @@ import {Observer} from "rxjs/Observer";
 export class WebSocketService {
 	private subject: Subject<MessageEvent>;
 
-	// For chat box
 	public connect(url: string): Subject<MessageEvent> {
 		if (!this.subject) {
 			this.subject = this.create(url);
@@ -37,4 +36,4 @@ export class WebSocketService {
 
 		return Subject.create(observer, observable);
 	}
-} // end class WebSocketService
+}

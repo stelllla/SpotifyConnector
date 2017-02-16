@@ -32,4 +32,11 @@ export class UsersService {
      return this.http.get('/api/users')
             .map(res => res.json());
   }
+
+  updateUserStatus(id, status) {
+    var headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    return this.http.post('/user/updateStatus', JSON.stringify({ id: id, status: status}),{headers: headers})
+                .map(response => response.json());
+  }
 }

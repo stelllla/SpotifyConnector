@@ -4,6 +4,7 @@ import { Router, NavigationStart} from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
 import {ChatService} from "./services/chat.service";
 import {WebSocketService} from "./services/websocket.service";
+import {MessageService} from "./services/message.service";
 
 import 'rxjs/add/operator/filter';
 
@@ -11,7 +12,7 @@ import 'rxjs/add/operator/filter';
   moduleId: module.id,
   selector: 'my-app',
   templateUrl: 'app.components.html',
-  providers: [SpotifyService, AuthenticationService,ChatService, WebSocketService]
+  providers: [SpotifyService, AuthenticationService,ChatService, WebSocketService, MessageService]
 })
 
 export class AppComponent  {
@@ -21,7 +22,7 @@ export class AppComponent  {
         console.log(event);
         let currUserEmail = this._auth.getCurrentUser();
         if (!currUserEmail) {
-            if  (event.url == '/login' || event.url != "/register") {
+            if  (event.url != '/login' && event.url != "/register") {
               this._router.navigate(['/login']);
             }
         } else if (event.url == '/login' || event.url == "/register") {

@@ -13,13 +13,12 @@ var Subject_1 = require("rxjs/Subject");
 var websocket_service_1 = require("./websocket.service");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-var CHAT_URL = 'ws://localhost:3005';
+var CHAT_URL = 'ws://731e4e0a.ngrok.io';
 var ChatService = (function () {
     function ChatService(wsService, http) {
         this.wsService = wsService;
         this.http = http;
         this.messages = new Subject_1.Subject();
-        // 1. subscribe to chatbox
         this.messages = this.wsService
             .connect(CHAT_URL)
             .map(function (response) {
@@ -31,17 +30,6 @@ var ChatService = (function () {
             };
         });
     }
-    ChatService.prototype.loadMessages = function () {
-        return this.http.get('/api/messages')
-            .map(function (res) { return res.json(); });
-    };
-    ChatService.prototype.saveMessage = function (message) {
-        console.log(message);
-        var headers = new http_1.Headers();
-        headers.append("Content-Type", "application/json");
-        return this.http.post("/api/message", JSON.stringify(message), { headers: headers })
-            .map(function (response) { return response.json(); });
-    };
     return ChatService;
 }());
 ChatService = __decorate([

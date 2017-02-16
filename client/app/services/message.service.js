@@ -14,38 +14,27 @@ var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 //Observable through reactive extensions so we want to import map operator to map the data
 require("rxjs/add/operator/map");
-var UsersService = (function () {
-    function UsersService(http) {
+var MessageService = (function () {
+    function MessageService(http) {
         this.http = http;
         console.log("Users Service Initialized...");
     }
-    UsersService.prototype.getUser = function (email) {
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.get("/api/users/" + email)
-            .map(function (response) { return response.json(); });
-    };
-    UsersService.prototype.addUser = function (user) {
-        var headers = new http_1.Headers();
-        headers.append("Content-Type", "application/json");
-        return this.http.post("/api/user", JSON.stringify(user), { headers: headers })
-            .map(function (response) { return response.json(); });
-    };
-    UsersService.prototype.getAllUsers = function () {
-        return this.http.get('/api/users')
+    MessageService.prototype.loadMessages = function () {
+        return this.http.get('/api/messages')
             .map(function (res) { return res.json(); });
     };
-    UsersService.prototype.updateUserStatus = function (id, status) {
+    MessageService.prototype.saveMessage = function (message) {
+        console.log(message);
         var headers = new http_1.Headers();
         headers.append("Content-Type", "application/json");
-        return this.http.post('/user/updateStatus', JSON.stringify({ id: id, status: status }), { headers: headers })
+        return this.http.post("/api/message", JSON.stringify(message), { headers: headers })
             .map(function (response) { return response.json(); });
     };
-    return UsersService;
+    return MessageService;
 }());
-UsersService = __decorate([
+MessageService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], UsersService);
-exports.UsersService = UsersService;
-//# sourceMappingURL=users.service.js.map
+], MessageService);
+exports.MessageService = MessageService;
+//# sourceMappingURL=message.service.js.map
