@@ -55,13 +55,13 @@ const appRoutes: Routes = [
   }
  ];*/
 
-// export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes, {useHash: true});
+ export const AppRoutingModule: ModuleWithProviders = RouterModule.forRoot(appRoutes, {useHash: true});
 
-@NgModule({
-  imports: [ RouterModule.forRoot(appRoutes, {useHash: true}) ],
-  exports: [ RouterModule ]
-})
-export class AppRoutingModule {}
+// @NgModule({
+//   imports: [ RouterModule.forRoot(appRoutes, {useHash: true}) ],
+//   exports: [ RouterModule ]
+// })
+// export class AppRoutingModule {}
 
 /**
  * export const dynamicRouting: ModuleWithProviders = RouterModule.forRoot(dynamicRoutes);
